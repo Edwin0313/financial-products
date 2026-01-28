@@ -41,3 +41,7 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+/.vs/financial-products.slnx/FileContentIndex/d25c0263-cd45-4220-a589-47f4723c5cac.vsidx
+/.vs/slnx.sqlite
+/.vs/financial-products.slnx/FileContentIndex/226b6038-7293-4f39-aa6f-f071421cfcb5.vsidx
+*.vsidx
