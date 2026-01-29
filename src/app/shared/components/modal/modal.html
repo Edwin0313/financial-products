@@ -1,0 +1,10 @@
+<div class="modal-overlay" (click)="closed.emit()">
+    <div class="modal-content" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
+        <div class="modal-body">
+            <ng-content></ng-content>
+        </div>
+        <div class="modal-footer">
+            <ng-content select="[footer]"></ng-content>
+        </div>
+    </div>
+</div>

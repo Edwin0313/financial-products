@@ -1,0 +1,25 @@
+:host {
+    display: table-row;
+    height: 60px;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #f2f2f2;
+    vertical-align: middle;
+}
+
+.skeleton-circle, .skeleton-line, .skeleton-action {
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer {
+    to { background-position-x: -200%; }
+}
+
+.skeleton-circle { width: 40px; height: 40px; border-radius: 50%; }
+.skeleton-line { height: 12px; width: 80%; border-radius: 2px; }
+.skeleton-action { height: 20px; width: 5px; margin: 0 auto; border-radius: 2px; }

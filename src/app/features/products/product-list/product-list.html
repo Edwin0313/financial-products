@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="controls-container">
+        <input type="text" placeholder="Search..." class="search-input" (input)="onSearch($event)" />
+
+        <button class="btn-add" routerLink="/products/add">
+            Agregar
+        </button>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Logo</th>
+                    <th>Nombre del producto</th>
+                    <th>Descripción</th>
+                    <th>Fecha de liberación</th>
+                    <th>Fecha de reestructuración</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (isLoading()) {
+                @for (i of [1,2,3,4,5]; track i) {
+                <tr app-skeleton-row></tr>
+                }
+                } @else {
+                @for (product of paginatedProducts(); track product.id) {
+                <tr>
+                    <td>
+                        <img [src]="product.logo" [alt]="product.name" class="logo-img" />
+                    </td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.date_release | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ product.date_revision | date:'dd/MM/yyyy' }}</td>
+                    <td>
+                        <app-product-actions [product]="product" (delete)="confirmDelete(product)">
+                        </app-product-actions>
+                    </td>
+                </tr>
+                } @empty {
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 2rem;">
+                        No se encontraron resultados
+                    </td>
+                </tr>
+                }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        <span>{{ totalResults() }} Resultados</span>
+
+        <div>
+            <label for="itemsPerPage">Mostrar</label>
+            <select id="itemsPerPage" (change)="onItemsPerPageChange($event)">
+                <option [value]="5">5</option>
+                <option [value]="10">10</option>
+                <option [value]="20">20</option>
+            </select>
+        </div>
+    </div>
+</div>
+@if (productToDelete(); as product) {
+<app-modal (closed)="cancelDelete()">
+    <p>¿Estás seguro de que deseas eliminar el producto <b>{{ product.name }}</b>?</p>
+
+    <div footer>
+        <button class="btn-cancel" (click)="cancelDelete()">Cancelar</button>
+        <button class="btn-confirm" (click)="executeDelete()">Confirmar</button>
+    </div>
+</app-modal>
+}

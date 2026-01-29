@@ -1,0 +1,12 @@
+<div class="actions-container">
+    <button class="trigger-btn" (click)="toggleMenu()" aria-haspopup="true" [aria-expanded]="isOpen()">
+        ⋮
+    </button>
+
+    @if (isOpen()) {
+    <div class="dropdown-menu" role="menu">
+        <button role="menuitem" [routerLink]="['/products/edit', product().id]">Editar</button>
+        <button role="menuitem" (click)="onDelete()" class="delete-btn">Eliminar</button>
+    </div>
+    }
+</div>

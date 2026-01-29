@@ -1,0 +1,68 @@
+:host {
+  display: contents;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 4px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecf3;
+}
+
+.modal-body {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.modal-footer {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  border-top: 1px solid #f2f2f2;
+
+  ::ng-deep {
+    div[footer] {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    button {
+      flex: 1;
+      max-width: 160px;
+      padding: 0.85rem;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-cancel {
+      background-color: #e9ecf3;
+      color: #0f265c;
+    }
+
+    .btn-confirm {
+      background-color: #ffdd00;
+      color: #0f265c;
+    }
+  }
+}

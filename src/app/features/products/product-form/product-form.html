@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="form-container">
+        <h2>{{ title() }}</h2>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input id="id" formControlName="id"
+                        [class.invalid]="form.get('id')?.invalid && form.get('id')?.touched">
+                    <div class="error-msg">
+                        @if (form.get('id')?.errors?.['idExists']) { ID no válido! }
+                        @else if (form.get('id')?.touched && form.get('id')?.invalid) { Campo requerido }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input id="name" formControlName="name"
+                        [class.invalid]="form.get('name')?.invalid && form.get('name')?.touched">
+                    <div class="error-msg">
+                        @if (form.get('name')?.touched && form.get('name')?.invalid) { Nombre inválido }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <input id="description" formControlName="description"
+                        [class.invalid]="form.get('description')?.invalid && form.get('description')?.touched">
+                    <div class="error-msg">
+                        @if (form.get('description')?.touched && form.get('description')?.invalid) { Descripción
+                        inválida }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="logo">Logo</label>
+                    <input id="logo" formControlName="logo"
+                        [class.invalid]="form.get('logo')?.invalid && form.get('logo')?.touched">
+                    <div class="error-msg">
+                        @if (form.get('logo')?.touched && form.get('logo')?.invalid) { Logo inválido }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_release">Fecha Liberación</label>
+                    <input id="date_release" type="date" formControlName="date_release"
+                        (change)="onDateReleaseChange()">
+                    <div class="error-msg"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_revision">Fecha Revisión</label>
+                    <input id="date_revision" type="date" formControlName="date_revision">
+                    <div class="error-msg"></div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn-reset" (click)="resetForm()">Reiniciar</button>
+                <button type="submit" class="btn-submit" [disabled]="form.invalid">
+                    {{ isEditMode() ? 'Guardar Cambios' : 'Enviar' }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

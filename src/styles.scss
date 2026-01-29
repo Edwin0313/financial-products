@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #ffdd00;
+  --secondary-color: #0f265c;
+  --text-color: #333333;
+  --bg-color: #f5f6f8;     
+  --border-color: #e9ecf3;
+  --error-color: #d92b2b;  
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', 'Roboto', sans-serif; 
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
